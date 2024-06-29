@@ -1,16 +1,16 @@
 const http = require('http');
+const express = require('express')
 
  //req - запрос
  //res - ответ сервера
 
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Hello, World!\n');
-});
+ const app = express();
+ const PORT = process.env.PORT || 3000; 
 
-const PORT = process.env.PORT || 3000;
+ app.get(PORT, (req, res) => {
+   res.send('RusAnki!');
+ });
 
-server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}/`);
-});
-
+ app.listen(PORT, () => {
+   console.log(`Server is running on port ${PORT}.`);
+ });
