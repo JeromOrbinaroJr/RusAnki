@@ -22,6 +22,11 @@ app.set('views');
    res.render('home');
  });  
 
+ app.get('/about', (req, res) => {
+   res.render('about');
+ });
+
+
  app.listen(PORT, () => {
    console.log(`Server is running on port ${PORT}.`);
  });
