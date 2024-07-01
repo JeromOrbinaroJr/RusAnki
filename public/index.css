@@ -1,6 +1,6 @@
 .nav-wrapper {
     padding: 0 2 rem;
-    background-color: #4FC3F7;
+    background-color: #1496d3;
   }
   
   .brand-logo {
@@ -93,21 +93,5 @@ html, body {
   }
   
   .icon-spacing {
-    margin-top: 40px;
+    margin-top: 30px;
   } 
-
-  @media (max-width: 600px) {
-    .brand-logo {
-        font-size: 1.5rem;
-    }
-    .nav-wrapper img {
-        height: 30px;
-    }
-    #nav-mobile.left {
-        display: none;
-    }
-    #nav-mobile.right {
-        width: 100%;
-        text-align: center;
-    }
-}

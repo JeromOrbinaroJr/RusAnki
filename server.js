@@ -3,6 +3,7 @@ const path = require('path');
 const express = require('express')
 const exphsb = require('express-handlebars');
 const app = express();
+
  //req - запрос
  //res - ответ сервера
 
@@ -14,6 +15,7 @@ const app = express();
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views');
+
 
 app.use(express.static('public'));
 
