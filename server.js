@@ -40,6 +40,12 @@ app.get('/settings', (req, res) => {
   });
 });
 
+app.get('/aboutUs', (req, res) => {
+  res.render('aboutUs', {
+    title: 'О нас',
+    isAboutUs: true
+  });
+});
 
  app.listen(PORT, () => {
    console.log(`Server is running on port ${PORT}.`);
