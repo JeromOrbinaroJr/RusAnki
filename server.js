@@ -15,15 +15,22 @@ app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views');
 
+app.use(express.static('public'));
 
  const PORT = process.env.PORT || 3000; 
 
  app.get('/', (req, res) => {
-   res.render('home');
+   res.render('home', {
+    title: 'Главная страница',
+    isHome: true
+   });
  });  
 
- app.get('/about', (req, res) => {
-   res.render('about');
+ app.get('/support', (req, res) => {
+  res.render('support', {
+    title: 'Страница поддержки',
+    isSupport: true
+  });
  });
 
 
