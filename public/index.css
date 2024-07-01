@@ -3,13 +3,6 @@
     background-color: #1496d3;
   }
   
-  .brand-logo {
-    font-family: 'Roboto', sans-serif;
-    font-size: 2rem;
-    font-weight: 500;
-    color: #ffffff;
-  }
-  
   #nav-mobile {
     margin-right: 20px;
   }
@@ -37,26 +30,22 @@
     }
   }
   
-/* Set body and html to take full height */
 html, body {
     height: 100%;
     margin: 0;
   }
   
-  /* Ensure the page content takes at least the full height of the viewport */
   body {
     display: flex;
     flex-direction: column;
   }
   
-  /* The main content will take all available space except the footer height */
   .main-content {
     flex: 1;
   }
   
-  /* Style the footer */
   .page-footer {
-    background-color: #4FC3F7; /* Light blue background color */
+    background-color: #4FC3F7;
     padding: 20px 0;
     color: white;
   }
@@ -86,14 +75,13 @@ html, body {
     color: white;
   }
   
-  /* Ensure the footer stays at the bottom */
   .footer-copyright {
     background-color: #0288D1;
     padding: 10px 0;
   }
   
   .icon-spacing {
-    margin-top: 20px;
+    margin-top: 30px;
   } 
 
   .input-field label {
@@ -127,10 +115,6 @@ html, body {
   justify-content: center;
   flex-direction: column;
   margin-bottom: 20px;
-}
-
-.account-header .icon-spacing {
-  margin-bottom: 10px;
 }
 
 
