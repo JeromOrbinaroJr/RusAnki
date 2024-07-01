@@ -70,22 +70,8 @@ app.get('/decks', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
+       console.log(`Server is running on port ${PORT}.`);
 });
-
-
-app.get('/signup', (req, res) => {
-  res.render('signup', {
-    title: 'Регистрация'
-  });
-});
-
-
-
-
- app.listen(PORT, () => {
-   console.log(`Server is running on port ${PORT}.`);
- });
 
 
 
