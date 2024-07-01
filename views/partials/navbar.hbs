@@ -5,9 +5,25 @@
             RusAnki
         </a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#">Создать колоду</a></li>
-        <li><a href="#">Библиотека</a></li>
-        <li><a href="#">Аккаунт</a></li>
+        
+        {{#if isDecks}}
+            <li class= "active"><a href="/decks">Колоды</a></li>
+        {{else}}
+            <li><a href="/decks">Колоды</a></li>
+        {{/if}}
+
+        {{#if isLibrary}}
+            <li class= "active"><a href="/library">Библиотека</a></li>
+        {{else}}
+            <li><a href="/library">Библиотека</a></li>
+        {{/if}}
+
+        {{#if isAccount}}
+            <li class= "active"><a href="/account">Аккаунт</a></li>
+        {{else}}
+            <li><a href="/account">Аккаунт</a></li>
+        {{/if}}
+        
       </ul>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
 

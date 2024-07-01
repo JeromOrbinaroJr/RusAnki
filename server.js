@@ -49,6 +49,28 @@ app.get('/aboutUs', (req, res) => {
   });
 });
 
+app.get('/account', (req, res) => {
+  res.render('account', {
+    title: 'Аккаунт',
+    isAccount: true
+  });
+});
+
+app.get('/library', (req, res) => {
+  res.render('library', {
+    title: 'Библиотека',
+    isLibrary: true
+  });
+});
+
+app.get('/decks', (req, res) => {
+  res.render('decks', {
+    title: 'Колоды',
+    isDecks: true
+  });
+});
+
+
  app.listen(PORT, () => {
    console.log(`Server is running on port ${PORT}.`);
  });
