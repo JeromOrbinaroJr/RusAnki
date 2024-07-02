@@ -3,6 +3,13 @@ const path = require('path');
 const express = require('express');
 const exphsb = require('express-handlebars');
 const app = express();
+const homeRoutes = require('./routes/home');
+const accountRoutes = require('./routes/account');
+const supportRoutes = require('./routes/support');
+const settingsRoutes = require('./routes/settings');
+const decksRoutes = require('./routes/decks');
+const libraryRoutes = require('./routes/library');
+const aboutUsRoutes = require('./routes/aboutUs');
 
 // req - запрос
 // res - ответ сервера
@@ -20,54 +27,13 @@ app.use(express.static('public'));
 
 const PORT = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
-    res.render('home', {
-        title: 'Главная страница',
-        isHome: true
-    });
-});
-
-app.get('/support', (req, res) => {
-    res.render('support', {
-        title: 'Страница поддержки',
-        isSupport: true
-    });
-});
-
-app.get('/settings', (req, res) => {
-    res.render('settings', {
-        title: 'Настройки',
-        isSettings: true
-    });
-});
-
-app.get('/aboutUs', (req, res) => {
-    res.render('aboutUs', {
-        title: 'О нас',
-        isAboutUs: true
-    });
-});
-
-app.get('/account', (req, res) => {
-    res.render('account', {
-        title: 'Аккаунт',
-        isAccount: true
-    });
-});
-
-app.get('/library', (req, res) => {
-    res.render('library', {
-        title: 'Библиотека',
-        isLibrary: true
-    });
-});
-
-app.get('/decks', (req, res) => {
-    res.render('decks', {
-        title: 'Колоды',
-        isDecks: true
-    });
-});
+app.use(homeRoutes);
+app.use(accountRoutes);
+app.use(supportRoutes);
+app.use(settingsRoutes);
+app.use(decksRoutes);
+app.use(libraryRoutes);
+app.use(aboutUsRoutes);
 
 app.listen(PORT, () => {
        console.log(`Server is running on port ${PORT}.`);
