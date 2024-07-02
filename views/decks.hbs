@@ -1,11 +1,53 @@
-{{!-- <div class="container">
+{{!-- <i class="large material-icons icon-spacing">collections</i>
+<div class="container">
     <div class="deck-creator">
-        <h2>Создать новую колоду</h2>
-        <div id="cardContainer"></div>
-        <button id="addCardButton">Добавить карточку</button>
-        <button id="saveDeckButton">Сохранить колоду</button>
+        <button id="createDeckButton" class="btn waves-effect waves-light">Создать колоду</button>
+    </div>
+    <div id="cardEditorContainer" class="card-editor-container" style="display: none;">
+        <h3 id="deckNameHeader"></h3>
+        <div class="flashcard" id="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">
+                    <textarea id="frontText" placeholder="Напишите вопрос здесь..."></textarea>
+                </div>
+                <div class="flashcard-back">
+                    <textarea id="backText" placeholder="Напишите ответ здесь..."></textarea>
+                </div>
+            </div>
+        </div>
+        <button id="flipCardButton" class="btn waves-effect waves-light">Перевернуть карту</button>
+        <button id="saveCardButton" class="btn waves-effect waves-light">Сохранить карту</button>
     </div>
 </div>
-<script src="/cardAnimation.js"></script>
 
- --}}
+<!-- Модальное окно для ввода названия колоды -->
+<div id="deckNameModal" class="modal">
+    <div class="modal-content">
+        <h4>Введите название колоды</h4>
+        <div class="input-field">
+            <input id="deckNameInput" type="text" class="validate">
+            <label for="deckNameInput">Название колоды</label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button id="saveDeckNameButton" class="modal-close waves-effect waves-green btn">Сохранить</button>
+    </div>
+</div>
+
+<script src="/js/decks.js"></script> --}}
+
+<div class="container">
+    <h1>Мои Колоды</h1>
+    <button id="createDeckButton" class="btn waves-effect waves-light">Создать Колоду</button>
+
+    <div id="deckCreationContainer" class="hidden">
+        <div class="input-field col s12">
+            <input id="deckName" type="text" class="validate">
+            <label for="deckName">Название Колоды</label>
+        </div>
+        <button id="addCardButton" class="btn waves-effect waves-light">Добавить Карточку</button>
+        <div id="flashcardContainer"></div>
+        <button id="finishDeckButton" class="btn waves-effect waves-light">Завершить Колоду</button>
+    </div>
+</div>
+<script src="/js/deckCreation.js"></script>
