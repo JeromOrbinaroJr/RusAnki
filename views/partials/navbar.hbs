@@ -1,7 +1,6 @@
 <nav>
     <div class="nav-wrapper">
       <a href="/" class="brand-logo center">
-            {{!-- <img src="#" alt="Logo" style="height: 40px; vertical-align: middle;"> --}}
             RusAnki
         </a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -33,13 +32,11 @@
             <li><a href="/aboutUs">О нас</a></li>
         {{/if}}
 
-
         {{#if isSupport}}
             <li class="active"><a href="/support">Поддержка</a></li>  
         {{else}}
             <li><a href="/support">Поддержка</a></li>  
         {{/if}}
-
 
         {{#if isSettings}}
             <li class= "active"><a href="/settings">Настройки</a></li>

@@ -1,112 +1,145 @@
 .nav-wrapper {
-    padding: 0 2 rem;
-    background-color: #1496d3;
-  }
-  
-  #nav-mobile {
-    margin-right: 20px;
-  }
-  
-  #nav-mobile li a {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: #ffffff;
-  }
-  
-  #nav-mobile li a:hover {
-    background-color: #0288D1;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  @media screen and (max-width: 992px) {
-    .brand-logo {
-      font-size: 1.5rem;
-    }
-  
-    #nav-mobile li a {
-      font-size: 1rem;
-    }
-  }
-  
-html, body {
-    height: 100%;
-    margin: 0;
-  }
-  
-  body {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .main-content {
-    flex: 1;
-  }
-  
-  .page-footer {
-    background-color: #4FC3F7;
-    padding: 20px 0;
-    color: white;
-  }
-  
-  .page-footer .container {
-    width: 85%;
-    margin: 0 auto;
-  }
-  
-  .page-footer .container .row .col {
-    margin-bottom: 20px;
-  }
-  
-  .page-footer h5 {
-    margin-top: 0;
-  }
-  
-  .page-footer .grey-text.text-lighten-3 {
-    color: rgba(255, 255, 255, 0.7);
-  }
-  
-  .page-footer .grey-text.text-lighten-4 {
-    color: rgba(255, 255, 255, 0.8);
-  }
-  
-  .page-footer .grey-text.text-lighten-4:hover {
-    color: white;
-  }
-  
-  .footer-copyright {
-    background-color: #0288D1;
-    padding: 10px 0;
-  }
-  
-  .icon-spacing {
-    margin-top: 30px;
-  } 
+  padding: 0 2rem;
+  background-color: #1496d3;
+}
 
-  .input-field label {
-    color: #000;
+#nav-mobile {
+  margin-right: 20px;
+}
+
+#nav-mobile li a {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+#nav-mobile li a:hover {
+  background-color: #0288D1;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.container {
+  max-width: 2500px;
+  margin: 50px auto;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.deck-creator {
+  text-align: center;
+}
+
+.flashcard {
+  width: 300px;
+  height: 500px;
+  perspective: 1000px;
+  margin: 20px auto;
+}
+
+.flashcard-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.flashcard-front, .flashcard-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.flashcard-back {
+  transform: rotateY(180deg);
+}
+
+.flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+input, textarea {
+  width: calc(100% - 40px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-field label {
+  color: #000;
 }
 
 .input-field input[type=text]:focus + label,
 .input-field input[type=email]:focus + label,
 .input-field input[type=password]:focus + label {
-    color: #0288D1;
+  color: #0288D1;
 }
 
 .input-field input[type=text]:focus,
 .input-field input[type=email]:focus,
 .input-field input[type=password]:focus {
-    border-bottom: 1px solid #0288D1;
-    box-shadow: 0 1px 0 0 #0288D1;
+  border-bottom: 1px solid #0288D1;
+  box-shadow: 0 1px 0 0 #0288D1;
 }
 
 .btn {
-    background-color: #0288D1;
+  background-color: #0288D1;
 }
 
 .btn:hover {
-    background-color: #0277BD;
+  background-color: #0277BD;
 }
 
 .account-header {
@@ -116,5 +149,3 @@ html, body {
   flex-direction: column;
   margin-bottom: 20px;
 }
-
-

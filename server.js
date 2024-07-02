@@ -1,8 +1,5 @@
 const http = require('http');
 const path = require('path');
-const express = require('express');
-const exphsb = require('express-handlebars');
-const app = express();
 const homeRoutes = require('./routes/home');
 const accountRoutes = require('./routes/account');
 const supportRoutes = require('./routes/support');
@@ -10,6 +7,9 @@ const settingsRoutes = require('./routes/settings');
 const decksRoutes = require('./routes/decks');
 const libraryRoutes = require('./routes/library');
 const aboutUsRoutes = require('./routes/aboutUs');
+const express = require('express');
+const exphsb = require('express-handlebars');
+const app = express();
 
 // req - запрос
 // res - ответ сервера
