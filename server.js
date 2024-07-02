@@ -7,7 +7,7 @@ const settingsRoutes = require('./routes/settings');
 const decksRoutes = require('./routes/decks');
 const libraryRoutes = require('./routes/library');
 const aboutUsRoutes = require('./routes/aboutUs');
-const iba = require('./routes/iba')
+const ibaRoutes = require('./routes/iba')
 const express = require('express');
 const exphsb = require('express-handlebars');
 const app = express();
@@ -35,7 +35,7 @@ app.use(settingsRoutes);
 app.use(decksRoutes);
 app.use(libraryRoutes);
 app.use(aboutUsRoutes);
-app.use(iba);
+app.use(ibaRoutes);
 
 app.listen(PORT, () => {
        console.log(`Server is running on port ${PORT}.`);
