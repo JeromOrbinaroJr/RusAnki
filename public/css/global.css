@@ -24,8 +24,19 @@ html, body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
   }
-  
-  /* h1 {
-    margin-bottom: 20px;
-  }
-   */
+
+  @media (max-width: 768px) {
+    .container {
+        padding: 5px;
+        margin: 10px auto;
+    }
+    
+    .flashcard {
+        width: 100%;
+        height: auto;
+    }
+
+    #nav-mobile li a {
+        font-size: 1rem;
+    }
+}
