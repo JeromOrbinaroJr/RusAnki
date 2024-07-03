@@ -3,10 +3,8 @@ const User = require('../models/User'); // Импортируем модель �
 const router = Router();
 
 router.get('/account', (req, res) => {
-    res.render('account', {
-        title: 'Аккаунт',
+        title: 'Аккаунт'
         isAccount: true
-    });
 });
 
 router.post('/account/register', async (req, res) => {

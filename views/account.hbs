@@ -2,5 +2,10 @@
     <i class="large material-icons icon-spacing">account_circle</i>
 </div>
 <div class="main-content">
-    {{> registrationForm }}
+    {{#if isLoggedIn}}
+        {{> userProfile }}
+    {{else}}
+        {{> registrationForm }}
+        {{> loginForm }}
+    {{/if}}
 </div>
