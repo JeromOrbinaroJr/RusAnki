@@ -26,7 +26,7 @@
 
 button {
   padding: 10px 20px;
-  background-color: #28a745;
+  background-color: #4c75e7;
   color: white;
   border: none;
   border-radius: 5px;
@@ -37,7 +37,7 @@ button {
 }
 
 button:hover {
-  background-color: #218838;
+  background-color: #315fc2;
 }
 
 
@@ -64,21 +64,6 @@ button:hover {
 .flipped .flashcard-inner {
   transform: rotateY(180deg);
 }
-
-/* button {
-  padding: 10px 20px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 10px;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #218838;
-} */
 
 input, textarea {
   width: calc(100% - 40px);

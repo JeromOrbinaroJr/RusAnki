@@ -1,11 +1,11 @@
-const {Router} = require('express');
+const { Router } = require('express');
 const router = Router();
 
 router.get('/settings', (req, res) => {
     res.render('settings', {
         title: 'Настройки',
-        isSettings: true
+        isSettings: true,
     });
-})
+});
 
 module.exports = router;
