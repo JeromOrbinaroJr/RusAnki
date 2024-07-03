@@ -4,7 +4,7 @@ const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const path = require('path');
 
-// Подключение к маршрутам
+// Подключение к маршрутам  
 const homeRoutes = require('./routes/home');
 const accountRoutes = require('./routes/account');
 const supportRoutes = require('./routes/support');
@@ -38,12 +38,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
 
 const PORT = process.env.PORT || 3000;
-// Подключение к MongoDB
-// const db = 'mongodb+srv://Denis:JeromOrbinaroJr227@rusanki.g7zcdqv.mongodb.net/?retryWrites=true&w=majority&appName=RusAnki';
-// mongoose
-//   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-//   .then(() => console.log('Connected to MongoDB'))
-//   .catch((error) => console.log(error));
 
 // Подключение маршрутов
 app.use(homeRoutes);

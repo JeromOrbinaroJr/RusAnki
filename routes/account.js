@@ -6,8 +6,6 @@ router.get('/account', (req, res) => {
     res.render('account', {
         title: 'Аккаунт',
         isAccount: true,
-        isLoggedIn: req.session.isLoggedIn,
-        user: req.session.user
     });
 });
 
