@@ -1,20 +1,20 @@
 <div class="row">
-    <form id="registrationForm" class="col s12">
+    <form id="registrationForm" class="col s12" method="POST" action="/account/register">
         <div class="row">
             <div class="input-field col s12">
-                <input id="name" type="text" class="validate">
+                <input id="name" name="name" type="text" class="validate" required>
                 <label for="name">Имя</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <input id="login" type="text" class="validate">
+                <input id="login" name="login" type="text" class="validate" required>
                 <label for="login">Логин</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <input id="password" type="password" class="validate">
+                <input id="password" name="password" type="password" class="validate" required>
                 <label for="password">Пароль</label>
             </div>
         </div>
