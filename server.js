@@ -1,5 +1,10 @@
 const http = require('http');
+const express = require('express');
+const exphbs = require('express-handlebars');
+const mongoose = require('mongoose');
 const path = require('path');
+
+// Подключение к маршрутам  
 const homeRoutes = require('./routes/home');
 const accountRoutes = require('./routes/account');
 const supportRoutes = require('./routes/support');
@@ -8,14 +13,19 @@ const decksRoutes = require('./routes/decks');
 const libraryRoutes = require('./routes/library');
 const aboutUsRoutes = require('./routes/aboutUs');
 const ibaRoutes = require('./routes/iba')
-const express = require('express');
-const exphsb = require('express-handlebars');
+
+
 const app = express();
 
 // req - запрос
 // res - ответ сервера
 
-const hbs = exphsb.create({
+// Middleware для обработки данных форм
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+// Настройка Handlebars
+const hbs = exphbs.create({
     defaultLayout: 'main',
     extname: 'hbs'
 });
@@ -24,100 +34,21 @@ app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
+// Статические файлы
 app.use(express.static('public'));
 
 const PORT = process.env.PORT || 3000;
 
+// Подключение маршрутов
 app.use(homeRoutes);
 app.use(accountRoutes);
 app.use(supportRoutes);
+app.use(ibaRoutes);
 app.use(settingsRoutes);
 app.use(decksRoutes);
 app.use(libraryRoutes);
 app.use(aboutUsRoutes);
-app.use(ibaRoutes);
 
 app.listen(PORT, () => {
        console.log(`Server is running on port ${PORT}.`);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- // :) 11010000 10011000 11010000 10110001 11010000 10110000 11010001 10000010 11010001 10000011 11010000 10111011 11010000 10111000 11010000 10111101 00100000 11010000 10010101 11010000 10110001 11010000 10110000 11010000 10111101 11010000 10110000 11010001 10000010
