@@ -1,176 +1,120 @@
-/* .deck-creator {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .card-editor-container {
-    text-align: center;
-    margin: 20px auto;
-  }
-  
-  .flashcard {
-    width: 300px;
-    height: 200px;
-    perspective: 1000px;
-    margin: 20px auto;
-  }
-  
-  .flashcard-inner {
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    position: relative;
-  }
-  
-  .flashcard-front, .flashcard-back {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .flashcard-back {
-    transform: rotateY(180deg);
-  }
-  
-  .flipped .flashcard-inner {
-    transform: rotateY(180deg);
-  }
-  
-  textarea {
-    width: calc(100% - 40px);
-    height: calc(100% - 40px);
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    resize: none;
-  }
-  
-  button {
-    margin: 10px;
-  }
-  
-  .modal {
-    width: 50%;
-  }
-  
-  .modal-content h4 {
-    margin-bottom: 20px;
-  }
-  
-  .modal-content .input-field {
-    margin-bottom: 20px;
-  }
-   */
-
-   .hidden {
-    display: none;
+.hidden {
+  display: none;
 }
 
 #flashcardContainer {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .flashcard {
-    width: 400px;
-    height: 500px;
-    perspective: 1000px;
-    margin: 20px auto;
+  width: 400px;
+  height: 500px;
+  perspective: 1000px;
+  margin: 20px auto;
+  position: relative; /* Добавлено */
+  z-index: 1; /* Добавлено */
 }
 
 .flashcard-inner {
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    position: relative;
-}
-
-.flashcard-front, .flashcard-back {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.flashcard-back {
-    transform: rotateY(180deg);
-}
-
-.flipped .flashcard-inner {
-    transform: rotateY(180deg);
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+  z-index: 1; /* Добавлено */
 }
 
 button {
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 10px;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  position: relative; /* Добавлено */
+  z-index: 2; /* Добавлено */
 }
 
 button:hover {
-    background-color: #218838;
+  background-color: #218838;
 }
 
+
+.flashcard-front, .flashcard-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.flashcard-back {
+  transform: rotateY(180deg);
+}
+
+.flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+/* button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #218838;
+} */
+
 input, textarea {
-    width: calc(100% - 40px);
-    padding: 10px;
-    margin: 20px 0;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+  width: calc(100% - 40px);
+  padding: 10px;
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: #0288D1;
+  box-shadow: 0 0 8px rgba(0, 136, 209, 0.1);
 }
 
 .input-field label {
-    color: #000;
+  color: #000;
 }
 
 .input-field input[type=text]:focus + label,
 .input-field input[type=email]:focus + label,
 .input-field input[type=password]:focus + label {
-    color: #0288D1;
+  color: #0288D1;
 }
 
 .input-field input[type=text]:focus,
 .input-field input[type=email]:focus,
 .input-field input[type=password]:focus {
-    border-bottom: 1px solid #0288D1;
-    box-shadow: 0 1px 0 0 #0288D1;
+  border-bottom: 1px solid #0288D1;
+  box-shadow: 0 1px 0 0 #0288D1;
 }
 
 .btn {
-    background-color: #0288D1;
+  background-color: #0288D1;
 }
 
 .btn:hover {
-    background-color: #0277BD;
+  background-color: #0277BD;
 }
-
-.account-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-bottom: 20px;
-}   
