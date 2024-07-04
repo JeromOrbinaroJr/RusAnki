@@ -1,24 +1,59 @@
-{{!-- Страница библиотеки --}}
 
+{{!-- Страница библиотеки --}}
 <i class="large material-icons icon-spacing">book</i>
-<h1>Библиотека</h1>
 <div class="container">
-    <div class="flashcard-container">
-        <div class="flashcard" id="flashcard">
-            <div class="flashcard-inner">
-                <div class="flashcard-front">
-                    <h2>Вопрос</h2>
-                    <p>What is the capital of France?</p>
-                </div>
-                <div class="flashcard-back">
-                    <h2>Ответ</h2>
-                    <p>Paris</p>
-                </div>
+    {{#each decks}}
+        <div class="deck-container">
+            <h2>{{this.name}}</h2>
+            <div class="carousel">
+                {{#each this.cards}}
+                    <a class="carousel-item" href="#{{../this.name}}!">
+                        <div class="flashcard-small">
+                            <div class="flashcard-inner-small">
+                                <div class="flashcard-front-small">
+                                    <p>{{this.question}}</p>
+                                </div>
+                                <div class="flashcard-back-small">
+                                    <p>{{this.answer}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {{/each}}
+                {{#unless this.cards.length}}
+                    <a class="carousel-item" href="#!">
+                        <div class="flashcard-small">
+                            <div class="flashcard-inner-small">
+                                <div class="flashcard-front-small">
+                                    <p>Нет карточек</p>
+                                </div>
+                                <div class="flashcard-back-small">
+                                    <p>Добавьте карточки</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {{/unless}}
             </div>
+            <a href="/library/deck/{{this.id}}" class="btn">Просмотр колоды</a>
         </div>
-        <button id="flipButton">Flip Card</button>
-    </div>
+    {{/each}}
 </div>
-<script src="/cardAnimation.js"></script>
-</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const elems = document.querySelectorAll('.carousel');
+        M.Carousel.init(elems, {
+            fullWidth: false, // Отключаем полноэкранный режим
+            indicators: true,
+            padding: 20, // Устанавливаем отступы между элементами
+            numVisible: 5, // Количество видимых элементов в карусели
+            shift: 0, // Сдвиг элементов в карусели
+        });
+    });
+</script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 

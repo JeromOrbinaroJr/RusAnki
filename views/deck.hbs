@@ -1,0 +1,19 @@
+{{!-- Страница детального просмотра колоды --}}
+<i class="large material-icons icon-spacing">book</i>
+<h1>{{deck.name}}</h1>
+<div class="container">
+    {{#each deck.cards}}
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">
+                    <h2>Вопрос</h2>
+                    <p>{{this.question}}</p>
+                </div>
+                <div class="flashcard-back">
+                    <h2>Ответ</h2>
+                    <p>{{this.answer}}</p>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
