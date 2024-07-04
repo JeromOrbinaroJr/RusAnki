@@ -11,9 +11,10 @@ body {
 .container {
     width: 80%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 30px auto 20px;
     padding: 20px;
 }
+
 
 h1, h2, h3 {
     text-align: center;
@@ -155,7 +156,7 @@ p {
     color: white;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.5s, color 0.5s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .btn:hover {
