@@ -1,4 +1,3 @@
-const http = require('http');
 const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
@@ -17,7 +16,7 @@ const app = express();
 
 // Middleware для обработки данных форм
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 // Настройка Handlebars
 const hbs = exphbs.create({
@@ -37,13 +36,12 @@ const PORT = process.env.PORT || 3000;
 // Подключение маршрутов
 app.use(homeRoutes);
 app.use(accountRoutes);
-app.use(supportRoutes);
 app.use(ibaRoutes);
 app.use(statisticsRoutes);
 app.use(decksRoutes);
 app.use(libraryRoutes);
 app.use(aboutUsRoutes);
-
+app.use(supportRoutes);
 
 app.listen(PORT, () => {
        console.log(`Server is running on port ${PORT}.`);

@@ -1,12 +1,55 @@
 {{!-- Страница поддержки --}}
-
 <i class="large material-icons icon-spacing">build</i>
-    <div class="contact-form container">
-        <h2>Свяжитесь с нами</h2>
-        <form>
-            <input type="text" placeholder="Ваше имя">
-            <input type="email" placeholder="Ваш email">
-            <textarea placeholder="Ваше сообщение"></textarea>
-            <button type="submit">Отправить</button>
-        </form>
-    </div>
+<div class="contact-form container">
+    <h2>Свяжитесь с нами</h2>
+    <form id="contact-form">
+        <input type="text" name="name" placeholder="Ваше имя" required>
+        <input type="email" name="email" placeholder="Ваш email" required>
+        <textarea name="message" placeholder="Ваше сообщение" required></textarea>
+        <button type="submit">Отправить</button>
+    </form>
+    <div id="notification" class="notification"></div>
+</div>
+
+<script>
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Предотвращает обычную отправку формы
+    
+    // Собираем данные формы
+    const formData = new FormData(this);
+    const formObject = {};
+    formData.forEach((value, key) => {
+        formObject[key] = value;
+    });
+
+    // Отправляем данные на сервер
+    fetch('/support', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formObject),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            document.getElementById('notification').innerText = 'Письмо успешно отправлено';
+            document.getElementById('notification').style.color = 'green';
+        } else {
+            document.getElementById('notification').innerText = 'Ошибка при отправке письма';
+            document.getElementById('notification').style.color = 'red';
+        }
+    })
+    .catch(error => {
+        document.getElementById('notification').innerText = 'Ошибка при отправке письма';
+        document.getElementById('notification').style.color = 'red';
+    });
+});
+</script>
+
+<style>
+.notification {
+    margin-top: 10px;
+    font-size: 16px;
+}
+</style>
