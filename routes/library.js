@@ -7,14 +7,15 @@ const decks = [
         id: 1,
         name: 'French Capitals',
         cards: [
-            { question: 'What is the capital of France?', answer: 'Paris' },
-            { question: 'What is the capital of Belgium?', answer: 'Brussels' },
-            { question: 'What is the capital of Belgium?', answer: 'Brussels' },
-            { question: 'What is the capital of Belgium?', answer: 'Brussels' },
-            { question: 'What is the capital of Belgium?', answer: 'Brussels' },
+            { question: 'Я убью себя когда', answer: 'Paris' },
+            { question: 'Выпадет снег', answer: 'Brussels' },
+            { question: 'Андрей Замай мне сказал что единого нет', answer: 'Berlin' },
+            { question: 'И я убью себя', answer: 'Madrid' },
+            { question: 'Чтобы было плохо тебе', answer: 'Rome' },
+            { question: 'Скажу загнался по хуйне', answer: 'Rome' },
+            { question: 'Похуй я мёртвый поэт', answer: 'Rome' }
         ]
-    },
-    // Добавьте другие колоды здесь
+    }
 ];
 
 router.get('/library', (req, res) => {
@@ -32,7 +33,8 @@ router.get('/library/deck/:id', (req, res) => {
     if (deck) {
         res.render('deck', {
             title: deck.name,
-            deck: deck
+            deck: deck,
+            deckData: JSON.stringify(deck)
         });
     } else {
         res.status(404).send('Deck not found');

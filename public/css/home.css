@@ -1,0 +1,164 @@
+/* Общие стили для страницы */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    color: #0277BD;
+}
+
+p {
+    text-align: center;
+    font-size: 1.2em;
+}
+
+/* Приветственное сообщение */
+.welcome-message {
+    background-color: #82c5e9;
+    color: white;
+    padding: 50px 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-message h1 {
+    font-size: 3em;
+    margin: 0 0 10px;
+}
+
+.welcome-message p {
+    font-size: 1.5em;
+}
+
+/* Основные функции */
+.main-functions {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.main-functions ul {
+    list-style: none;
+    padding: 0;
+}
+
+.main-functions ul li {
+    font-size: 1.2em;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.main-functions ul li:last-child {
+    border-bottom: none;
+}
+
+/* Кнопки быстрого доступа */
+.quick-access {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.quick-access .btn {
+    background-color: #0277BD;
+    color: white;
+    padding: 15px 30px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    display: inline-block; /* Добавлено для корректного отображения кнопок */
+    vertical-align: middle; /* Выравнивание кнопок по вертикали */
+    transition: background-color 0.5s, transform 0.4s;
+    line-height: 0; /* Поднятие текста кнопок */
+}
+
+.quick-access .btn:hover {
+    background-color: #01579B;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Блог и новости */
+.blog-news {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.blog-news p {
+    font-size: 1.2em;
+    text-align: center;
+    color: #555;
+}
+
+.blog-news a {
+    color: #0277BD;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.blog-news a:hover {
+    color: #01579B;
+}
+
+/* Социальные доказательства */
+.social-proof {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.social-proof a {
+    margin: 0 20px;
+    font-size: 1.5em;
+    color: #0277BD;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-proof a:hover {
+    color: #01579B;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 2px solid #0277BD;
+    background-color: #0277BD;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.btn:hover {
+    background-color: #01579B;
+    border-color: #01579B;
+}

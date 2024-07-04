@@ -1,19 +1,26 @@
-{{!-- Страница детального просмотра колоды --}}
+{{!-- views/deck.hbs --}}
 <i class="large material-icons icon-spacing">book</i>
 <h1>{{deck.name}}</h1>
 <div class="container">
-    {{#each deck.cards}}
-        <div class="flashcard">
-            <div class="flashcard-inner">
-                <div class="flashcard-front">
-                    <h2>Вопрос</h2>
-                    <p>{{this.question}}</p>
-                </div>
-                <div class="flashcard-back">
-                    <h2>Ответ</h2>
-                    <p>{{this.answer}}</p>
+    <div class="flashcard-container">
+        {{#each deck.cards}}
+            <div class="flashcard" id="flashcard{{@index}}">
+                <div class="flashcard-inner">
+                    <div class="flashcard-front">
+                        <h2>Вопрос</h2>
+                        <p>{{this.question}}</p>
+                        <button class="btn flip-card" data-card-index="{{@index}}">Перевернуть</button>
+                    </div>
+                    <div class="flashcard-back">
+                        <h2>Ответ</h2>
+                        <p>{{this.answer}}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    {{/each}}
+        {{/each}}
+    </div>
+    <div class="navigation-buttons">
+        <button id="prevCardButton" class="btn waves-effect waves-light">Предыдущая карточка</button>
+        <button id="nextCardButton" class="btn waves-effect waves-light">Следующая карточка</button>
+    </div>
 </div>
