@@ -1,4 +1,4 @@
-{{!-- Страница Аккаунта / Входа / Регистрации --}}
+{{!-- Страница Аккаунта / Входа / Регистрации
 
 <div class="account-header">
     <i class="large material-icons icon-spacing">account_circle</i>
@@ -10,4 +10,49 @@
         {{> registrationForm }}
         {{> loginForm }}
     {{/if}}
+</div> --}}
+
+{{!-- Страница Аккаунта / Входа / Регистрации --}}
+
+{{!-- Страница Аккаунта / Входа / Регистрации --}}
+
+<div class="account-header">
+    <i class="large material-icons icon-spacing">account_circle</i>
 </div>
+<div class="main-content">
+    {{#if isLoggedIn}}
+        {{> userProfile }}
+    {{else}}
+        <div class="form-switcher">
+            <button id="loginButton" class="btn active">Вход</button>
+            <button id="registerButton" class="btn">Регистрация</button>
+        </div>
+        <div id="formContainer">
+            {{> loginForm }}
+            {{> registrationForm }}
+        </div>
+    {{/if}}
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginButton = document.getElementById('loginButton');
+        const registerButton = document.getElementById('registerButton');
+        const loginForm = document.getElementById('loginForm');
+        const registrationForm = document.getElementById('registrationForm');
+
+        loginButton.addEventListener('click', function() {
+            loginForm.style.display = 'block';
+            registrationForm.style.display = 'none';
+            loginButton.classList.add('active');
+            registerButton.classList.remove('active');
+        });
+
+        registerButton.addEventListener('click', function() {
+            loginForm.style.display = 'none';
+            registrationForm.style.display = 'block';
+            loginButton.classList.remove('active');
+            registerButton.classList.add('active');
+        });
+    });
+</script>

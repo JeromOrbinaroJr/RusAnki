@@ -31,3 +31,17 @@
     margin-bottom: 20px;
   }
   
+  /* Скрыть форму регистрации по умолчанию */
+#registrationForm {
+  display: none;
+}
+
+/* Активные кнопки */
+.form-switcher .btn {
+  margin: 0 5px;
+}
+
+.form-switcher .btn.active {
+  background-color: #00796b;
+  color: white;
+}

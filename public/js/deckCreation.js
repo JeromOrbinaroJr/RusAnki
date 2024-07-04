@@ -15,12 +15,12 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="flashcard">
                 <div class="flashcard-inner">
                     <div class="flashcard-front">
-                        <h2>Question</h2>
+                        <h2>Вопрос</h2>
                         <textarea placeholder="Вопрос"></textarea>
                         <button class="flipCardButton">Перевернуть</button>
                     </div>
                     <div class="flashcard-back">
-                        <h2>Answer</h2>
+                        <h2>Ответ</h2>
                         <textarea placeholder="Ответ"></textarea>
                         <button class="flipCardButton">Перевернуть</button>
                     </div>
