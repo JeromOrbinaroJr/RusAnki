@@ -1,7 +1,8 @@
+const bcrypt = require('bcrypt');
 const db = require('../database/database');
 
 class User {
-  static findOne(params) {
+  static async findOne(params) {
     const { login } = params;
     return new Promise((resolve, reject) => {
       db.get('SELECT * FROM users WHERE login = ?', [login], (err, row) => {
@@ -14,21 +15,23 @@ class User {
     });
   }
 
-  static create(user) {
+  static async create(user) {
     const { name, login, password } = user;
+    const hashedPassword = await bcrypt.hash(password, 10); // Хешируем пароль
+
     return new Promise((resolve, reject) => {
-      db.run('INSERT INTO users (name, login, password) VALUES (?, ?, ?)', [name, login, password], function(err) {
+      db.run('INSERT INTO users (name, login, password) VALUES (?, ?, ?)', [name, login, hashedPassword], function(err) {
         if (err) {
           reject(err);
         } else {
-          resolve({ id: this.lastID, ...user });
+          resolve({ id: this.lastID, name, login });
         }
       });
     });
   }
 
-  static comparePassword(storedPassword, inputPassword) {
-    return storedPassword === inputPassword;
+  static async comparePassword(storedPassword, inputPassword) {
+    return await bcrypt.compare(inputPassword, storedPassword); // Сравниваем хеши паролей
   }
 }
 

@@ -48,7 +48,7 @@ router.post('/account/login', async (req, res) => {
       return res.status(400).json({ message: 'Неверный логин или пароль' });
     }
 
-    const isMatch = User.comparePassword(user.password, password);
+    const isMatch = await User.comparePassword(user.password, password); // Используем обновленный метод
     if (!isMatch) {
       return res.status(400).json({ message: 'Неверный логин или пароль' });
     }
@@ -61,6 +61,7 @@ router.post('/account/login', async (req, res) => {
     res.status(500).json({ message: 'Ошибка сервера' });
   }
 });
+
 
 router.post('/account/logout', (req, res) => {
   req.session.destroy(() => {
