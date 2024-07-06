@@ -13,16 +13,14 @@
 
 <script>
 document.getElementById('contact-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Предотвращает обычную отправку формы
+    event.preventDefault();
     
-    // Собираем данные формы
     const formData = new FormData(this);
     const formObject = {};
     formData.forEach((value, key) => {
         formObject[key] = value;
     });
 
-    // Отправляем данные на сервер
     fetch('/support', {
         method: 'POST',
         headers: {

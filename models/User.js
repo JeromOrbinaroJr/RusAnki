@@ -1,4 +1,4 @@
-const db = require('../database');
+const db = require('../database/database');
 
 class User {
   static findOne(params) {

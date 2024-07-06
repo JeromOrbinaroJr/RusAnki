@@ -1,17 +1,8 @@
 const { Router } = require('express');
 const router = Router();
-const Deck = require('../models/Deck'); // Подключите модель Deck
+const Deck = require('../models/Deck');
+const authenticate = require('../middleware/authenticate');
 
-// Middleware для проверки аутентификации
-function authenticate(req, res, next) {
-  if (req.session.user) {
-    next(); // Продолжить выполнение, если пользователь аутентифицирован
-  } else {
-    res.redirect('/account'); // Иначе перенаправить на страницу входа/регистрации
-  }
-}
-
-// Защита маршрутов с использованием middleware authenticate
 router.get('/decks', authenticate, (req, res) => {
   res.render('decks', {
     title: 'Колоды',
@@ -19,17 +10,15 @@ router.get('/decks', authenticate, (req, res) => {
   });
 });
 
-// Обработчик POST запроса на создание колоды
 router.post('/createDeck', authenticate, async (req, res) => {
   const { deckName, flashcards } = req.body;
-  const userId = req.session.user.id; // Получаем ID пользователя из сессии
+  const userId = req.session.user.id;
 
   try {
-    // Создание новой колоды в базе данных
     const newDeck = await Deck.create({
       name: deckName,
       cards: flashcards,
-      userId: userId // Связываем колоду с пользователем
+      userId: userId
     });
 
     res.json({ success: true });

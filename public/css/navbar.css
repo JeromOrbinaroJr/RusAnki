@@ -1,24 +1,24 @@
-.nav-wrapper {
-    padding: 0 2rem;
-    background-color: rgb(149, 186, 255);
-  }
-  
-  #nav-mobile {
-    margin-right: 20px;
-    margin-left: 20px;
-  }
-  
-  #nav-mobile li a {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: #ffffff;
-  }
-  
-  #nav-mobile li a:hover {
-    background-color: #38aff0;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  
+  .nav-wrapper {
+      padding: 0 2rem;
+      background-color: rgb(149, 186, 255);
+    }
+    
+    #nav-mobile {
+      margin-right: 20px;
+      margin-left: 20px;
+    }
+    
+    #nav-mobile li a {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #ffffff;
+    }
+    
+    #nav-mobile li a:hover {
+      background-color: #38aff0;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    
+    

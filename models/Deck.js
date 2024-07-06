@@ -1,4 +1,4 @@
-const db = require('../database');
+const db = require('../database/database');
 
 class Deck {
     static create(deck) {
@@ -44,13 +44,11 @@ class Deck {
                     };
                     resolve(deck);
                 } else {
-                    resolve(null); // Колода не найдена
+                    resolve(null);
                 }
             });
         });
     }
-
-    // Другие методы, например, для удаления колоды и т.д.
 }
 
 module.exports = Deck;

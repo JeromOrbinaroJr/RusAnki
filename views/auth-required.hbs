@@ -1,0 +1,58 @@
+{{!-- Шаблон для страницы с гифкой --}}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <style>
+        .center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .center img {
+            width: 500px;
+            height: 500px;
+        }
+        .center .btn-container {
+            margin-top: 30px;
+            width: 300px;
+            text-align: center;
+        }
+        .center a.btn {
+            display: block;
+            width: 100%;
+            padding: 15px 0;
+            background-color: #38aff0;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.2rem;
+            text-align: center;
+            line-height: 1.2rem;
+        }
+        .center a.btn:hover {
+            background-color: #3098c1;
+        }
+        .message {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+        <div class="message">Чтобы воспользоваться данным функционалом, пожалуйста, зарегистрируйтесь.</div>
+        <img src="/photos/a5f917807cd5bb7ecf59bc56a8858593.gif" alt="Loading">
+        <div class="btn-container">
+            <a href="/account" class="btn">Регистрация</a>
+        </div>
+    </div>
+</body>
+</html>

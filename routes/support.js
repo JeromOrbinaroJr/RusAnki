@@ -2,12 +2,11 @@ const { Router } = require('express');
 const nodemailer = require('nodemailer');
 const router = Router();
 
-// Настройте nodemailer transporter для Gmail
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'jorbinarojr@gmail.com', // Замените на ваш email
-        pass: 'nhuu smud wcht uebg'    // Замените на ваш App Password
+        user: 'jorbinarojr@gmail.com',
+        pass: 'nhuu smud wcht uebg'
     }
 });
 
@@ -20,7 +19,7 @@ router.post('/support', (req, res) => {
 
     const mailOptions = {
         from: email,
-        to: 'jorbinarojr@gmail.com', // Замените на ваш email
+        to: 'jorbinarojr@gmail.com',
         subject: `Сообщение от ${name}`,
         text: message
     };
