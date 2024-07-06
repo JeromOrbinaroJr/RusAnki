@@ -1,35 +1,31 @@
-    const { Router } = require('express');
-    const router = Router();
+const { Router } = require('express');
+const router = Router();
+const Deck = require('../models/Deck'); // Импортируем модель Deck
 
-    // Пример данных о колодах (в реальном приложении данные будут загружаться из базы данных)
-    const decks = [
-        {
-            id: 1,
-            name: 'French Capitals',
-            cards: [
-                { question: 'Я убью себя когда', answer: 'Paris' },
-                { question: 'Выпадет снег', answer: 'Brussels' },
-                { question: 'Андрей Замай мне сказал что единого нет', answer: 'Berlin' },
-                { question: 'И я убью себя', answer: 'Madrid' },
-                { question: 'Чтобы было плохо тебе', answer: 'Rome' },
-                { question: 'Скажу загнался по хуйне', answer: 'Rome' },
-                { question: 'Похуй я мёртвый поэт', answer: 'Rome' }
-            ]
-        }
-    ];
+// GET /library - отображение библиотеки пользователя
+router.get('/library', async (req, res) => {
+    try {
+        // Загрузка колод из базы данных, принадлежащих текущему пользователю
+        const decks = await Deck.findAllByUserId(req.session.user.id);
 
-    router.get('/library', (req, res) => {
         res.render('library', {
             title: 'Библиотека',
             isLibrary: true,
             decks: decks
         });
-    });
-    
-    router.get('/library/deck/:id', (req, res) => {
-        const deckId = parseInt(req.params.id, 10);
-        const deck = decks.find(d => d.id === deckId);
-    
+    } catch (error) {
+        console.error('Error loading user decks:', error);
+        res.status(500).send('Error loading user decks');
+    }
+});
+
+// GET /library/deck/:id - просмотр конкретной колоды
+router.get('/library/deck/:id', async (req, res) => {
+    const deckId = parseInt(req.params.id, 10);
+    try {
+        // Загрузка конкретной колоды из базы данных
+        const deck = await Deck.findByUserIdAndDeckId(req.session.user.id, deckId);
+
         if (deck) {
             res.render('deck', {
                 title: deck.name,
@@ -39,8 +35,10 @@
         } else {
             res.status(404).send('Deck not found');
         }
-    });
-    
+    } catch (error) {
+        console.error('Error loading deck:', error);
+        res.status(500).send('Error loading deck');
+    }
+});
 
-    module.exports = router;
-
+module.exports = router;

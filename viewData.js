@@ -8,7 +8,7 @@ const db = new sqlite3.Database('./mydb.sqlite', (err) => {
 });
 
 db.serialize(() => {
-  db.all('SELECT * FROM users', [], (err, rows) => {
+  db.all('SELECT * FROM decks', [], (err, rows) => {
     if (err) {
       throw err;
     }

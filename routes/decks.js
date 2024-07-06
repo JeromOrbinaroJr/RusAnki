@@ -1,17 +1,26 @@
-const {Router} = require('express');
+const { Router } = require('express');
 const router = Router();
-const Deck = require('../models/Deck'); // Создайте модель Deck
+const Deck = require('../models/Deck'); // Подключите модель Deck
 
-router.get('/decks', (req, res) => {
-    res.render('decks', {
-        title: 'Колоды',
-        isDecks: true
-    });
+// Middleware для проверки аутентификации
+function authenticate(req, res, next) {
+  if (req.session.user) {
+    next(); // Продолжить выполнение, если пользователь аутентифицирован
+  } else {
+    res.redirect('/account'); // Иначе перенаправить на страницу входа/регистрации
+  }
+}
+
+// Защита маршрутов с использованием middleware authenticate
+router.get('/decks', authenticate, (req, res) => {
+  res.render('decks', {
+    title: 'Колоды',
+    isDecks: true
+  });
 });
 
-
 // Обработчик POST запроса на создание колоды
-router.post('/createDeck', async (req, res) => {
+router.post('/createDeck', authenticate, async (req, res) => {
   const { deckName, flashcards } = req.body;
   const userId = req.session.user.id; // Получаем ID пользователя из сессии
 
@@ -25,8 +34,8 @@ router.post('/createDeck', async (req, res) => {
 
     res.json({ success: true });
   } catch (error) {
-    console.error('Error creating deck:', error);
-    res.status(500).json({ success: false, message: 'Error creating deck' });
+    console.error('Ошибка при создании колоды:', error);
+    res.status(500).json({ success: false, message: 'Ошибка при создании колоды' });
   }
 });
 
