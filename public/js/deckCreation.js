@@ -58,16 +58,27 @@ document.addEventListener('DOMContentLoaded', function () {
         }).then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert('Deck created successfully!');
+                alert('Колода успешно создана!');
                 createDeckButton.classList.remove('hidden');
                 deckCreationContainer.classList.add('hidden');
                 flashcardContainer.innerHTML = '';
             } else {
-                alert('Error creating deck. Please try again.');
+                alert('Ошибка создания колоды. Пожалуйста, попробуйте снова.');
             }
         }).catch(error => {
-            console.error('Error:', error);
-            alert('Error creating deck. Please try again.');
+            console.error('Ошибка:', error);
+            alert('Ошибка создания колоды. Пожалуйста, попробуйте снова.');
         });
     });
+});
+
+const deckNameInput = document.getElementById('deckName');
+const addCardButton = document.getElementById('addCardButton');
+
+deckNameInput.addEventListener('input', () => {
+    if (deckNameInput.value.trim() !== '') {
+        addCardButton.removeAttribute('disabled');
+    } else {
+        addCardButton.setAttribute('disabled', 'disabled');
+    }
 });
