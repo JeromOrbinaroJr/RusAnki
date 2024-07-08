@@ -24,6 +24,15 @@ db.serialize(() => {
     userId INTEGER NOT NULL,
     FOREIGN KEY (userId) REFERENCES users (id)
   )`);
+
+  // Создание таблицы shared_decks
+  db.run(`CREATE TABLE IF NOT EXISTS shared_decks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    cards TEXT NOT NULL,
+    theme TEXT NOT NULL,
+    direction TEXT NOT NULL
+  )`);
 });
 
 module.exports = db;

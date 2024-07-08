@@ -1,9 +1,11 @@
-{{!-- Страница библиотеки --}}
-<i class="large material-icons icon-spacing">book</i>
+{{!-- Страница общего репозитория --}}
+<i class="large material-icons icon-spacing">public</i>
 <div class="container">
     {{#each decks}}
         <div class="deck-container">
             <h2>{{this.name}}</h2>
+            <p>Тематика: {{this.theme}}</p>
+            <p>Направление: {{this.direction}}</p>
             <div class="carousel">
                 {{#each this.cards}}
                     <a class="carousel-item" href="#{{../this.name}}!">
@@ -34,7 +36,6 @@
                     </a>
                 {{/unless}}
             </div>
-            <a href="/library/deck/{{this.id}}" class="btn">Просмотр колоды</a>
         </div>
     {{/each}}
 </div>
