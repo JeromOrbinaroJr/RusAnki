@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <style>
 .container {
     max-width: 90%;
@@ -90,31 +91,300 @@ button {
             flashcards.forEach((card, i) => {
                 card.classList.toggle('hidden', i !== index);
             });
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards</title>
+    <style>
+        .container {
+            max-width: 90%;
+            margin: 0 auto;
+            text-align: center;
+>>>>>>> bade81acc1c1f50e5a77d6ec93dd57adf3a2508d
         }
 
-        document.querySelectorAll('.flashcard').forEach(card => {
-            card.addEventListener('click', function() {
-                card.classList.toggle('flipped');
+        .flashcard {
+            perspective: 1000px;
+            display: inline-block;
+            width: 400px;
+            height: 300px;
+            margin: 20px 0;
+        }
+
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .flashcard.flipped .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+            font-size: 1.5rem;
+        }
+
+        .flashcard-front {
+            background-color: #fff;
+        }
+
+        .flashcard-back {
+            background-color: #f1f1f1;
+            transform: rotateY(180deg);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .btn-container .btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+            border: none;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-know {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-know:hover {
+            background-color: #218838;
+        }
+
+        .btn-dont-know {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-dont-know:hover {
+            background-color: #c82333;
+        }
+
+        .btn-back {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-back:hover {
+            background-color: #0069d9;
+        }
+
+        .chart-container {
+            margin-top: 50px;
+        }
+
+        .center-content {
+            text-align: center;
+        }
+
+        .gif-container {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .gif-container img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .btn-retry {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            transition: background-color 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-retry:hover {
+            background-color: #218838;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+
+    <div class="container">
+        <div id="flashcardContainer">
+            {{#each deck.cards}}
+                <div class="flashcard {{#unless @first}}hidden{{/unless}}">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <p>{{ this.question }}</p>
+                        </div>
+                        <div class="flashcard-back">
+                            <p>{{ this.answer }}</p>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+
+        <div class="btn-container">
+            <div id="main-btns">
+                <button id="dontKnowButton" class="btn btn-dont-know">Не знаю</button>
+                <button id="backButton" class="btn btn-back">Назад</button>
+                <button id="knowButton" class="btn btn-know">Знаю</button>
+            </div>
+        </div>
+
+
+        <div class="chart-container hidden" id="chartContainer">
+            <a href="/library" id="toDeckButton" class="btn-retry">В библиотеку колод</a>
+            <canvas id="resultsChart"></canvas>
+        </div>
+
+        <div class="gif-container" id="gifContainer">
+            <h4>Поздравляем, все правильно!</h4>
+            <img src="/photos/driver.gif" alt="Поздравляем!">
+            <a href="/library" id="toDeckButton" class="btn-retry">В библиотеку колод</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const flashcards = document.querySelectorAll('.flashcard');
+            const backButton = document.getElementById('backButton');
+            const dontKnowButton = document.getElementById('dontKnowButton');
+            const knowButton = document.getElementById('knowButton');
+            const chartContainer = document.getElementById('chartContainer');
+            const gifContainer = document.getElementById('gifContainer');
+            const resultsChart = document.getElementById('resultsChart').getContext('2d');
+            let currentCardIndex = 0;
+            let knownCards = 0;
+            let unknownCards = [];
+
+            function showCard(index) {
+                flashcards.forEach((card, i) => {
+                    card.classList.toggle('hidden', i !== index);
+                });
+            }
+
+            document.querySelectorAll('.flashcard').forEach(card => {
+                card.addEventListener('click', function() {
+                    card.classList.toggle('flipped');
+                });
             });
-        });
 
-        document.getElementById('prevCardButton').addEventListener('click', function() {
-            if (currentCardIndex > 0) {
-                currentCardIndex--;
-                showCard(currentCardIndex);
+            dontKnowButton.addEventListener('click', function() {
+                if (!unknownCards.includes(currentCardIndex)) {
+                    unknownCards.push(currentCardIndex);
+                }
+                nextCard();
+            });
+
+            knowButton.addEventListener('click', function() {
+                knownCards++;
+                nextCard();
+            });
+
+            backButton.addEventListener('click', function() {
+                if (currentCardIndex > 0) {
+                    currentCardIndex--;
+                    showCard(currentCardIndex);
+                    const index = unknownCards.indexOf(currentCardIndex);
+                    if (index !== -1) {
+                        unknownCards.splice(index, 1);
+                    }
+                }
+            });
+
+            function nextCard() {
+                if (currentCardIndex < flashcards.length - 1) {
+                    currentCardIndex++;
+                    showCard(currentCardIndex);
+                } else {
+                    showResults();
+                }
             }
-        });
 
-        document.getElementById('nextCardButton').addEventListener('click', function() {
-            if (currentCardIndex < flashcards.length - 1) {
-                currentCardIndex++;
-                showCard(currentCardIndex);
+            function showResults() {
+                const totalCards = flashcards.length;
+                const unknownCount = unknownCards.length;
+                const knownCount = totalCards - unknownCount;
+
+                if (knownCount === totalCards) {
+                    showGif();
+                    return;
+                }
+
+                const chartData = {
+                    type: 'pie',
+                    data: {
+                        labels: ['Знаю', 'Не знаю'],
+                        datasets: [{
+                            data: [knownCount, unknownCount],
+                            backgroundColor: ['#28a745', '#dc3545']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top'
+                            }
+                        }
+                    }
+                };
+
+                document.getElementById('flashcardContainer').classList.add('hidden');
+                document.getElementById('main-btns').classList.add('hidden');
+                chartContainer.classList.remove('hidden');
+                new Chart(resultsChart, chartData);
             }
+
+            function showGif() {
+                document.getElementById('flashcardContainer').classList.add('hidden');
+                document.getElementById('main-btns').classList.add('hidden');
+                gifContainer.style.display = 'flex';
+            }
+
+            document.getElementById('toDeckButton').addEventListener('click', function() {
+                // Implement your logic to go back to decks here
+                alert('Going back to decks');
+            });
+
+            showCard(currentCardIndex);
         });
-
-        showCard(currentCardIndex);
-    });
-</script>
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </script>
+</body>
+</html>
