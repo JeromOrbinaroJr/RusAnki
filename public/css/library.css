@@ -49,3 +49,14 @@
   padding: 0; /* Убираем дополнительные отступы */
 }
 
+.publish-form {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.publish-form.visible {
+  max-height: 200px; /* Высота формы, когда она видима */
+  opacity: 1;
+}

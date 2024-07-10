@@ -1,4 +1,52 @@
-{{!-- Страница общего репозитория --}}
+
+<style>
+    .flashcard-small {
+  width: 200px;
+  height: 300px;
+  margin: 0; /* Убираем отступы вокруг карточки */
+  perspective: 1000px;
+  border: 2px solid #00796b; /* Обводка */
+  border-radius: 10px; /* Скругленные углы */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
+  background-color: #fff; /* Белый фон для непрозрачности */
+  opacity: 1; /* Полная непрозрачность */
+}
+
+.flashcard-inner-small {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flashcard-front-small, .flashcard-back-small {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px; /* Скругленные углы */
+  background-color: #fff; /* Белый фон для непрозрачности */
+  opacity: 1; /* Полная непрозрачность */
+}
+
+.flashcard-back-small {
+  transform: rotateY(180deg);
+}
+
+.carousel-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; /* Убираем дополнительные отступы */
+}
+
+</style>
+{{!-- sharedRepository.hbs --}}
 <i class="large material-icons icon-spacing">public</i>
 <div class="container">
     {{#each decks}}
@@ -36,14 +84,17 @@
                     </a>
                 {{/unless}}
             </div>
+            <form action="/shared-repository/add-to-library/{{this.id}}" method="POST">
+                <button type="submit" class="btn">Добавить в библиотеку</button>
+            </form>
         </div>
     {{/each}}
 </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const elems = document.querySelectorAll('.carousel');
-        M.Carousel.init(elems, {
+        const carousels = document.querySelectorAll('.carousel');
+        M.Carousel.init(carousels, {
             fullWidth: false,
             indicators: true,
             padding: 20,

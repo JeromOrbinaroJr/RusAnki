@@ -49,6 +49,65 @@ class Deck {
             });
         });
     }
+
+    static async findAllShared() {
+        return new Promise((resolve, reject) => {
+            db.all('SELECT * FROM shared_decks', (err, rows) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    const decks = rows.map(row => ({
+                        id: row.id,
+                        name: row.name,
+                        cards: JSON.parse(row.cards),
+                        theme: row.theme,
+                        direction: row.direction
+                    }));
+                    resolve(decks);
+                }
+            });
+        });
+    }
+
+    static async publishToShared(deckId, theme, direction) {
+        return new Promise((resolve, reject) => {
+            db.get('SELECT * FROM decks WHERE id = ?', [deckId], (err, row) => {
+                if (err) {
+                    reject(err);
+                } else if (row) {
+                    db.run('INSERT INTO shared_decks (name, cards, theme, direction) VALUES (?, ?, ?, ?)', [row.name, row.cards, theme, direction], function(err) {
+                        if (err) {
+                            reject(err);
+                        } else {
+                            resolve({ id: this.lastID, ...row, theme, direction });
+                        }
+                    });
+                } else {
+                    reject(new Error('Deck not found'));
+                }
+            });
+        });
+    }
+
+    static async addToLibrary(userId, sharedDeckId) {
+        return new Promise((resolve, reject) => {
+            db.get('SELECT * FROM shared_decks WHERE id = ?', [sharedDeckId], (err, row) => {
+                if (err) {
+                    reject(err);
+                } else if (row) {
+                    db.run('INSERT INTO decks (name, cards, userId) VALUES (?, ?, ?)', [row.name, row.cards, userId], function(err) {
+                        if (err) {
+                            reject(err);
+                        } else {
+                            resolve({ id: this.lastID, ...row, userId });
+                        }
+                    });
+                } else {
+                    reject(new Error('Shared deck not found'));
+                }
+            });
+        });
+    }
 }
 
 module.exports = Deck;

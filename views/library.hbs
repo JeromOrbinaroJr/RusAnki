@@ -1,4 +1,3 @@
-{{!-- Страница библиотеки --}}
 <i class="large material-icons icon-spacing">book</i>
 <div class="container">
     {{#each decks}}
@@ -34,13 +33,33 @@
                     </a>
                 {{/unless}}
             </div>
-            <a href="/library/deck/{{this.id}}" class="btn">Просмотр колоды</a>
+            <div class="btn-container">
+                <a href="/library/deck/{{this.id}}" class="btn">Просмотр колоды</a>
+                <button class="btn publish-deck">Публикация колоды</button>
+                <div class="publish-form hidden">
+                    <form action="/library/publish/{{this.id}}" method="POST">
+                        <input type="text" name="theme" placeholder="Тема">
+                        <input type="text" name="direction" placeholder="Направление">
+                        <button type="submit" class="btn">Опубликовать в общем репозитории</button>
+                    </form>
+                </div>
+            </div>
         </div>
     {{/each}}
 </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        const publishButtons = document.querySelectorAll('.publish-deck');
+        
+        publishButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const parentDeck = button.closest('.deck-container');
+                const publishForm = parentDeck.querySelector('.publish-form');
+                publishForm.classList.toggle('visible');
+            });
+        });
+
         const elems = document.querySelectorAll('.carousel');
         M.Carousel.init(elems, {
             fullWidth: false,
