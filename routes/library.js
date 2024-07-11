@@ -40,17 +40,28 @@ router.get('/library/deck/:id', authenticate, async (req, res) => {
 });
 
 router.post('/library/publish/:id', authenticate, async (req, res) => {
-  const deckId = parseInt(req.params.id, 10);
-  const { theme, direction } = req.body;
+    const deckId = parseInt(req.params.id, 10);
+    const { theme, direction } = req.body;
 
-  try {
-      const publishedDeck = await Deck.publishToShared(deckId, theme, direction);
-      res.redirect('/shared-repository');
-  } catch (error) {
-      console.error('Error publishing deck:', error);
-      res.status(500).send('Error publishing deck');
-  }
+    try {
+        const publishedDeck = await Deck.publishToShared(deckId, theme, direction);
+        res.redirect('/shared-repository');
+    } catch (error) {
+        console.error('Error publishing deck:', error);
+        res.status(500).send('Error publishing deck');
+    }
 });
 
+router.delete('/library/delete/:id', authenticate, async (req, res) => {
+    const deckId = parseInt(req.params.id, 10);
+
+    try {
+        await Deck.deleteByUserIdAndDeckId(req.session.user.id, deckId);
+        res.status(204).send();
+    } catch (error) {
+        console.error('Error deleting deck:', error);
+        res.status(500).send('Error deleting deck');
+    }
+});
 
 module.exports = router;

@@ -36,6 +36,7 @@
             <div class="btn-container">
                 <a href="/library/deck/{{this.id}}" class="btn">Просмотр колоды</a>
                 <button class="btn publish-deck">Публикация колоды</button>
+                <button class="btn delete-deck" data-id="{{this.id}}">Удалить колоду</button>
                 <div class="publish-form hidden">
                     <form action="/library/publish/{{this.id}}" method="POST">
                         <input type="text" name="theme" placeholder="Тема">
@@ -57,6 +58,25 @@
                 const parentDeck = button.closest('.deck-container');
                 const publishForm = parentDeck.querySelector('.publish-form');
                 publishForm.classList.toggle('visible');
+            });
+        });
+
+        const deleteButtons = document.querySelectorAll('.delete-deck');
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const deckId = button.getAttribute('data-id');
+                if (confirm('Вы уверены, что хотите удалить эту колоду?')) {
+                    fetch(`/library/delete/${deckId}`, {
+                        method: 'DELETE'
+                    }).then(response => {
+                        if (response.ok) {
+                            location.reload();
+                        } else {
+                            alert('Ошибка при удалении колоды');
+                        }
+                    });
+                }
             });
         });
 

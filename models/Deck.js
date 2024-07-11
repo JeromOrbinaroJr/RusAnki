@@ -1,3 +1,4 @@
+// models/Deck.js
 const db = require('../database/database');
 
 class Deck {
@@ -104,6 +105,18 @@ class Deck {
                     });
                 } else {
                     reject(new Error('Shared deck not found'));
+                }
+            });
+        });
+    }
+
+    static async deleteByUserIdAndDeckId(userId, deckId) {
+        return new Promise((resolve, reject) => {
+            db.run('DELETE FROM decks WHERE userId = ? AND id = ?', [userId, deckId], function(err) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve();
                 }
             });
         });
