@@ -1,6 +1,6 @@
 
 <style>
-    .flashcard-small {
+.flashcard-small {
   width: 200px;
   height: 300px;
   margin: 0; /* Убираем отступы вокруг карточки */
@@ -45,10 +45,14 @@
   padding: 0; /* Убираем дополнительные отступы */
 }
 
+container {
+    max-width: 1600px;
+}
+
 </style>
 {{!-- sharedRepository.hbs --}}
-<i class="large material-icons icon-spacing">public</i>
-<div class="container">
+<i class="large material-icons icon-spacing">public</i> 
+<div class="container"> 
     {{#each decks}}
         <div class="deck-container">
             <h2>{{this.name}}</h2>

@@ -1,24 +1,24 @@
 /* Общие стили для страницы */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'San Francisco', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background-color: #fafafa;
     color: #333;
     line-height: 1.6;
 }
 
 .container {
     width: 80%;
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 30px auto 20px;
     padding: 20px;
 }
 
-
 h1, h2, h3 {
     text-align: center;
-    color: #0277BD;
+    color: #007aff;
+    font-weight: 600;
 }
 
 p {
@@ -28,18 +28,19 @@ p {
 
 /* Приветственное сообщение */
 .welcome-message {
-    background-color: #82c5e9;
+    background-color: #77b5f8;
     color: white;
     padding: 50px 20px;
-    border-radius: 10px;
+    border-radius: 20px;
     margin-bottom: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .welcome-message h1 {
     font-size: 3em;
     margin: 0 0 10px;
+    font-weight: 700;
 }
 
 .welcome-message p {
@@ -49,9 +50,9 @@ p {
 /* Основные функции */
 .main-functions {
     background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
 }
 
@@ -77,33 +78,30 @@ p {
 }
 
 .quick-access .btn {
-    background-color: #0277BD;
+    background-color: #007aff;
     color: white;
     padding: 15px 30px;
     margin: 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 1.2em;
-    display: inline-block; /* Добавлено для корректного отображения кнопок */
-    vertical-align: middle; /* Выравнивание кнопок по вертикали */
+    display: inline-block;
     transition: background-color 0.5s, transform 0.4s;
-    line-height: 0; /* Поднятие текста кнопок */
 }
 
 .quick-access .btn:hover {
-    background-color: #01579B;
+    background-color: #005bb5;
     transform: translateY(-3px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-
 /* Блог и новости */
 .blog-news {
     background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
 }
 
@@ -114,21 +112,21 @@ p {
 }
 
 .blog-news a {
-    color: #0277BD;
+    color: #007aff;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .blog-news a:hover {
-    color: #01579B;
+    color: #005bb5;
 }
 
 /* Социальные доказательства */
 .social-proof {
     background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
     text-align: center;
 }
@@ -136,15 +134,16 @@ p {
 .social-proof a {
     margin: 0 20px;
     font-size: 1.5em;
-    color: #0277BD;
+    color: #007aff;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .social-proof a:hover {
-    color: #01579B;
+    color: #005bb5;
 }
 
+/* Кнопки */
 .btn {
     display: inline-block;
     padding: 15px 30px;
@@ -152,11 +151,12 @@ p {
     font-weight: bold;
     text-transform: uppercase;
     border: 2px solid #0277BD;
-    background-color: #0277BD;
+    background-color: #0277BD;  
     color: white;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
+    line-height: 0.7;
 }
 
 .btn:hover {

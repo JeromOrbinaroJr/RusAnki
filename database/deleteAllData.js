@@ -8,7 +8,7 @@ const db = new sqlite3.Database('./mydb.sqlite', (err) => {
 });
 
 db.serialize(() => {
-  db.run('DELETE FROM shared_decks', (err) => {
+  db.run('DELETE FROM users', (err) => {
     if (err) {
       console.error('Error clearing users table:', err.message);
     } else {

@@ -2,27 +2,31 @@
 .contact-form {
     background-color: #f9f9f9;
     border-radius: 8px;
-    padding: 20px;
+    padding: 30px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
     text-align: left; /* Выравнивание текста слева для улучшенной читаемости */
 }
 
 .contact-form form {
-    max-width: 500px; /* Сократил максимальную ширину формы для лучшей адаптивности */
+    max-width: 1000px; /* Сократил максимальную ширину формы для лучшей адаптивности */
     margin: 0 auto;
 }
 
 .contact-form input,
 .contact-form textarea {
-    width: 100%;
+    width: auto; /* Установка ширины на автоматический режим */
+    min-width: 100px; /* Минимальная ширина поля ввода */
     padding: 12px;
     margin: 8px 0;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1em;
     transition: border-color 0.3s ease-in-out; /* Плавное изменение цвета границы при фокусе */
+    box-sizing: border-box; /* Учитываем padding в общей ширине */
 }
+
+
 
 .contact-form input:focus,
 .contact-form textarea:focus {
