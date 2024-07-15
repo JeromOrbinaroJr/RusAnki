@@ -10,7 +10,6 @@ const sharedRepositoryRoutes = require('./routes/sharedRepository');
 const decksRoutes = require('./routes/decks');
 const libraryRoutes = require('./routes/library');
 const aboutUsRoutes = require('./routes/aboutUs');
-const ibaRoutes = require('./routes/iba');
 const profileRoutes = require('./routes/profile');
 const authRequiredRoutes = require('./routes/authRequired');
 
@@ -40,7 +39,6 @@ const PORT = process.env.PORT || 3000;
 
 app.use(homeRoutes);
 app.use(accountRoutes);
-app.use(ibaRoutes);
 app.use(sharedRepositoryRoutes);
 app.use(decksRoutes);
 app.use(libraryRoutes);
