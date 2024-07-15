@@ -16,7 +16,7 @@
   }
   
   .btn {
-    background-color: #0288D1;
+    background-color: rgb(10,41,87);
   }
   
   .btn:hover {
@@ -42,6 +42,6 @@
 }
 
 .form-switcher .btn.active {
-  background-color: #00796b;
+  background-color: #046bc0;
   color: white;
 }

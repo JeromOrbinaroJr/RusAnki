@@ -1,6 +1,6 @@
   .nav-wrapper {
       padding: 0 2rem;
-      background-color: rgb(149, 186, 255);
+      background-color: rgb(10,41,87);
     }
     
     #nav-mobile {
@@ -24,3 +24,10 @@
     nav {
       margin-bottom: 30px; /* Добавьте отступ снизу, чтобы элементы ниже не заходили на навигационную панель */
   }
+
+  .brand-logo {
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    text-decoration: none;
+}

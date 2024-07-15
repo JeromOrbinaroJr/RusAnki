@@ -8,7 +8,7 @@
   height: 300px;
   margin: 0; /* Убираем отступы вокруг карточки */
   perspective: 1000px;
-  border: 2px solid #00796b; /* Обводка */
+  border: 2px solid #000879; /* Обводка */
   border-radius: 10px; /* Скругленные углы */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
   background-color: #fff; /* Белый фон для непрозрачности */
@@ -88,7 +88,31 @@
 
 .copy-link, .delete-deck {
   cursor: pointer;
-  color: #00796b;
+  color: #000879;
   font-size: 24px;
   margin-left: 10px;
+}
+
+.btn-container .btn {
+  background-color: #38aff0;
+}
+
+.btn-container .btn:hover {
+  background-color: #000caf;
+}
+
+.btn-container .btn.publish-deck {
+  background-color: #000ba5;
+}
+
+.btn-container .btn.publish-deck:hover {
+  background-color: #000879;
+}
+
+.btn-container .btn.edit-deck {
+  background-color: #000879;
+}
+
+.btn-container .btn.edit-deck:hover {
+  background-color: #000657;
 }
