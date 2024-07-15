@@ -21,4 +21,6 @@
       transition: background-color 0.3s ease;
     }
     
-    
+    nav {
+      margin-bottom: 30px; /* Добавьте отступ снизу, чтобы элементы ниже не заходили на навигационную панель */
+  }

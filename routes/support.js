@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
 });
 
 router.get('/support', (req, res) => {
-    res.render('support', { title: 'Поддержка' });
+    res.render('support', { title: 'Поддержка', isSupport: true});
 });
 
 router.post('/support', (req, res) => {

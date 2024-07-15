@@ -5,16 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flashcards</title>
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .container {
-            max-width: 90%;
+            width: 100%;
             margin: 0 auto;
             text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .flashcard {
             perspective: 1000px;
             display: inline-block;
-            width: 400px;
+            width: 100%;
+            max-width: 400px;
             height: 300px;
             margin: 20px 0;
         }
@@ -63,6 +75,7 @@
             display: flex;
             justify-content: space-around;
             margin-top: 20px;
+            width: 100%;
         }
 
         .btn-container .btn {
@@ -107,6 +120,10 @@
 
         .chart-container {
             margin-top: 50px;
+            width: 100%;
+            max-width: 600px;
+            justify-content: center;
+            align-items: center;
         }
 
         .center-content {
@@ -118,6 +135,7 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            width: 100%;
         }
 
         .gif-container img {
@@ -163,8 +181,6 @@
                 </div>
             {{/each}}
         </div>
-</div>
-
 
         <div class="btn-container">
             <div id="main-btns">
@@ -173,7 +189,6 @@
                 <button id="knowButton" class="btn btn-know">Знаю</button>
             </div>
         </div>
-
 
         <div class="chart-container hidden" id="chartContainer">
             <a href="/library" id="toDeckButton" class="btn-retry">В библиотеку колод</a>
@@ -184,6 +199,7 @@
             <h4>Поздравляем, все правильно!</h4>
             <img src="/photos/driver.gif" alt="Поздравляем!">
             <a href="/library" id="toDeckButton" class="btn-retry">В библиотеку колод</a>
+        </div>
     </div>
 
     <script>

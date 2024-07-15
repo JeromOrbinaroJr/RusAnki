@@ -60,7 +60,35 @@
   opacity: 1;
 }
 
-/* Добавляем отступ сверху для контейнера, чтобы предотвратить перекрытие с navbar */
-.library-container {
-    margin-top: 200px; /* Регулируйте значение по необходимости */
+.container-fluid {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem; /* Adjust padding as needed */
+  box-sizing: border-box;
+}
+
+.deck-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.deck-title {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.icon-buttons {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 0;
+}
+
+.copy-link, .delete-deck {
+  cursor: pointer;
+  color: #00796b;
+  font-size: 24px;
+  margin-left: 10px;
 }

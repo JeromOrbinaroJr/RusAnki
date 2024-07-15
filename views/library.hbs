@@ -1,52 +1,60 @@
-<i class="large material-icons icon-spacing">book</i>
-<div class="container library-container">
-    {{#each decks}}
-        <div class="deck-container">
-            <h2>{{this.name}}</h2>
-            <div class="carousel">
-                {{#each this.cards}}
-                    <a class="carousel-item" href="#{{../this.name}}!">
-                        <div class="flashcard-small">
-                            <div class="flashcard-inner-small">
-                                <div class="flashcard-front-small">
-                                    <p>{{this.question}}</p>
-                                </div>
-                                <div class="flashcard-back-small">
-                                    <p>{{this.answer}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                {{/each}}
-                {{#unless this.cards.length}}
-                    <a class="carousel-item" href="#!">
-                        <div class="flashcard-small">
-                            <div class="flashcard-inner-small">
-                                <div class="flashcard-front-small">
-                                    <p>Нет карточек</p>
-                                </div>
-                                <div class="flashcard-back-small">
-                                    <p>Добавьте карточки</p>
+<div class="container-fluid">
+    <i class="large material-icons icon-spacing">book</i>
+    <div class="library-container">
+        {{#each decks}}
+            <div class="deck-container" id="deck-{{this.id}}">
+                <div class="deck-header">
+                    <h2 class="deck-title">{{this.name}}</h2>
+                    <div class="icon-buttons">
+                        <i class="material-icons copy-link" data-id="{{this.id}}" title="Скопировать ссылку">link</i>
+                        <i class="material-icons delete-deck" data-id="{{this.id}}" title="Удалить колоду">delete</i>
+                    </div>
+                </div>
+                <div class="carousel">
+                    {{#each this.cards}}
+                        <a class="carousel-item" href="#{{../this.name}}!">
+                            <div class="flashcard-small">
+                                <div class="flashcard-inner-small">
+                                    <div class="flashcard-front-small">
+                                        <p>{{this.question}}</p>
+                                    </div>
+                                    <div class="flashcard-back-small">
+                                        <p>{{this.answer}}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                {{/unless}}
-            </div>
-            <div class="btn-container">
-                <a href="/library/deck/{{this.id}}" class="btn">Просмотр колоды</a>
-                <button class="btn publish-deck">Публикация колоды</button>
-                <button class="btn delete-deck" data-id="{{this.id}}">Удалить колоду</button>
-                <div class="publish-form hidden">
-                    <form action="/library/publish/{{this.id}}" method="POST">
-                        <input type="text" name="theme" placeholder="Тема">
-                        <input type="text" name="direction" placeholder="Направление">
-                        <button type="submit" class="btn">Опубликовать в общем репозитории</button>
-                    </form>
+                        </a>
+                    {{/each}}
+                    {{#unless this.cards.length}}
+                        <a class="carousel-item" href="#!">
+                            <div class="flashcard-small">
+                                <div class="flashcard-inner-small">
+                                    <div class="flashcard-front-small">
+                                        <p>Нет карточек</p>
+                                    </div>
+                                    <div class="flashcard-back-small">
+                                        <p>Добавьте карточки</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    {{/unless}}
+                </div>
+                <div class="btn-container">
+                    <a href="/library/deck/{{this.id}}" class="btn">Просмотр колоды</a>
+                    <button class="btn publish-deck">Публикация колоды</button>
+                    <button class="btn edit-deck" onclick="window.location.href='/library/edit/{{this.id}}'">Редактирование колоды</button>
+                    <div class="publish-form hidden">
+                        <form action="/library/publish/{{this.id}}" method="POST">
+                            <input type="text" name="theme" placeholder="Тема">
+                            <input type="text" name="direction" placeholder="Направление">
+                            <button type="submit" class="btn">Опубликовать в общем репозитории</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    {{/each}}
+        {{/each}}
+    </div>
 </div>
 
 <script>
@@ -80,6 +88,20 @@
             });
         });
 
+        const copyLinkButtons = document.querySelectorAll('.copy-link');
+
+        copyLinkButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const deckId = button.getAttribute('data-id');
+                const url = `${window.location.origin}/library/add/${deckId}`;
+                navigator.clipboard.writeText(url).then(() => {
+                    M.toast({html: 'Ссылка скопирована в буфер обмена', classes: 'rounded'});
+                }).catch(err => {
+                    M.toast({html: 'Ошибка при копировании ссылки', classes: 'rounded'});
+                });
+            });
+        });
+
         const elems = document.querySelectorAll('.carousel');
         M.Carousel.init(elems, {
             fullWidth: false,
@@ -90,6 +112,4 @@
         });
     });
 </script>
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
