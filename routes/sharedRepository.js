@@ -18,6 +18,21 @@ router.get('/shared-repository', async (req, res) => {
     }
 });
 
+router.post('/shared-repository/search', async (req, res) => {
+    const { query } = req.body;
+    try {
+        const decks = await Deck.searchShared(query);
+        res.render('sharedRepository', {
+            title: 'Общий Репозиторий',
+            isSharedRepository: true,
+            decks: decks
+        });
+    } catch (error) {
+        console.error('Error searching shared decks:', error);
+        res.status(500).send('Error searching shared decks');
+    }
+});
+
 router.post('/shared-repository/publish', authenticate, async (req, res) => {
     const { name, cards, theme, direction } = req.body;
     const deck = { name, cards, theme, direction };

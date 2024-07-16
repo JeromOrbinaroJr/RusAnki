@@ -1,10 +1,9 @@
-/* Общие стили для страницы */
 body {
     font-family: 'San Francisco', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #fafafa;
-    color: #333;
+    color: #315fc2; /* голубой цвет текста */
     line-height: 1.6;
 }
 
@@ -15,18 +14,18 @@ body {
 
 h1, h2, h3 {
     text-align: center;
-    color: #007aff;
+    color: #046bc0; /* синий цвет заголовков */
     font-weight: 600;
 }
 
 p {
     text-align: center;
     font-size: 1.2em;
+    color: #315fc2; /* голубой цвет текста */
 }
 
-/* Приветственное сообщение */
 .welcome-message {
-    background-color: #77b5f8;
+    background-color: #77b5f8; /* голубой цвет фона приветственного сообщения */
     color: white;
     padding: 50px 20px;
     border-radius: 20px;
@@ -45,38 +44,23 @@ p {
     font-size: 1.5em;
 }
 
-/* Основные функции */
 .main-functions {
-    background-color: #ffffff;
+    background-color: #fff; /* белый фон основных функций */
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
 }
 
-.main-functions ul {
-    list-style: none;
-    padding: 0;
-}
-
 .main-functions ul li {
     font-size: 1.2em;
     padding: 15px 0;
     border-bottom: 1px solid #ddd;
-}
-
-.main-functions ul li:last-child {
-    border-bottom: none;
-}
-
-/* Кнопки быстрого доступа */
-.quick-access {
-    text-align: center;
-    margin-bottom: 30px;
+    color: #315fc2; /* голубой цвет текста */
 }
 
 .quick-access .btn {
-    background-color: #007aff;
+    background-color: #046bc0; /* синий цвет кнопок быстрого доступа */
     color: white;
     padding: 15px 30px;
     margin: 10px;
@@ -89,14 +73,13 @@ p {
 }
 
 .quick-access .btn:hover {
-    background-color: #005bb5;
+    background-color: #01579B; /* тёмный синий цвет при наведении */
     transform: translateY(-3px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Блог и новости */
 .blog-news {
-    background-color: #ffffff;
+    background-color: #fff; /* белый фон блока блога и новостей */
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -106,22 +89,21 @@ p {
 .blog-news p {
     font-size: 1.2em;
     text-align: center;
-    color: #555;
+    color: #315fc2; /* голубой цвет текста */
 }
 
 .blog-news a {
-    color: #007aff;
+    color: #046bc0; /* синий цвет ссылок */
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .blog-news a:hover {
-    color: #005bb5;
+    color: #01579B; /* тёмный синий цвет при наведении */
 }
 
-/* Социальные доказательства */
 .social-proof {
-    background-color: #ffffff;
+    background-color: #fff; /* белый фон блока социальных доказательств */
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -132,24 +114,23 @@ p {
 .social-proof a {
     margin: 0 20px;
     font-size: 1.5em;
-    color: #007aff;
+    color: #046bc0; /* синий цвет текста ссылок */
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .social-proof a:hover {
-    color: #005bb5;
+    color: #01579B; /* тёмный синий цвет при наведении */
 }
 
-/* Кнопки */
 .btn {
     display: inline-block;
     padding: 15px 30px;
     font-size: 1.2em;
     font-weight: bold;
     text-transform: uppercase;
-    border: 2px solid #0277BD;
-    background-color: #0277BD;  
+    border: 2px solid #0277BD; /* голубой цвет границы кнопок */
+    background-color: #0277BD; /* голубой цвет фона кнопок */
     color: white;
     border-radius: 10px;
     cursor: pointer;
@@ -158,6 +139,6 @@ p {
 }
 
 .btn:hover {
-    background-color: #01579B;
-    border-color: #01579B;
+    background-color: #01579B; /* тёмный синий цвет при наведении */
+    border-color: #01579B; /* тёмный синий цвет границы при наведении */
 }

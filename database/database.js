@@ -31,8 +31,8 @@ db.serialize(() => {
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     cards TEXT NOT NULL,
-    theme TEXT NOT NULL,
-    direction TEXT NOT NULL
+    theme TEXT,
+    direction TEXT
   )`);
 });
 

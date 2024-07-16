@@ -1,4 +1,4 @@
-<style>
+    <style>
         body, html {
             margin: 0;
             padding: 0;
@@ -9,13 +9,40 @@
         }
 
         .container {
-            flex: 1; /* Ensures the container takes the remaining space */
+            flex: 1;
             max-width: 1600px;
             margin: 0 auto;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+
+        .search-form {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px 0;
+            display: flex;
+        }
+
+        .search-form input[type="text"] {
+            flex: 1;
+            padding: 3px;
+            font-size: 18px;
+            border: 1px solid #000879;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .search-form button {
+            padding: 26.5px 20px;
+            border: none;
+            background-color: rgb(10, 41, 87);
+            color: white;
+            cursor: pointer;
+            border-radius: 0 4px 4px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .deck-container {
@@ -30,13 +57,13 @@
         .flashcard-small {
             width: 200px;
             height: 300px;
-            margin: 0; /* Убираем отступы вокруг карточки */
+            margin: 0;
             perspective: 1000px;
-            border: 2px solid #000879; /* Обводка */
-            border-radius: 10px; /* Скругленные углы */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
-            background-color: #fff; /* Белый фон для непрозрачности */
-            opacity: 1; /* Полная непрозрачность */
+            border: 2px solid #000879;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            opacity: 1;
         }
 
         .flashcard-inner-small {
@@ -56,9 +83,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 10px; /* Скругленные углы */
-            background-color: #fff; /* Белый фон для непрозрачности */
-            opacity: 1; /* Полная непрозрачность */
+            border-radius: 10px;
+            background-color: #fff;
+            opacity: 1;
         }
 
         .flashcard-back-small {
@@ -69,65 +96,74 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0; /* Убираем дополнительные отступы */
+            padding: 0;
         }
+
         .container-fluid {
             width: 100%;
             margin: 0 auto;
-            padding: 0 2rem; /* Adjust padding as needed */
+            padding: 0 2rem;
             box-sizing: border-box;
         }
+
         .btn {
-            background-color: rgb(10,41,87);
+            background-color: rgb(10, 41, 87);
         }
     </style>
 </head>
 <body>
     <div class="container-fluid">
-    <i class="large material-icons icon-spacing">public</i> 
-    <div class="container"> 
-        {{#each decks}}
+        <i class="large material-icons icon-spacing">public</i>
+        <div class="container">
+            <form class="search-form" action="/shared-repository/search" method="POST">
+                <input type="text" name="query" placeholder="Поиск по названию колоды">
+                <button type="submit" class="btn">
+                    <i class="material-icons">search</i>
+                </button>
+            </form>
+
+            {{#each decks}}
             <div class="deck-container">
                 <h2>{{this.name}}</h2>
                 <p>Тематика: {{this.theme}}</p>
                 <p>Направление: {{this.direction}}</p>
                 <div class="carousel">
                     {{#each this.cards}}
-                        <a class="carousel-item" href="#{{../this.name}}!">
-                            <div class="flashcard-small">
-                                <div class="flashcard-inner-small">
-                                    <div class="flashcard-front-small">
-                                        <p>{{this.question}}</p>
-                                    </div>
-                                    <div class="flashcard-back-small">
-                                        <p>{{this.answer}}</p>
-                                    </div>
+                    <a class="carousel-item" href="#{{../this.name}}!">
+                        <div class="flashcard-small">
+                            <div class="flashcard-inner-small">
+                                <div class="flashcard-front-small">
+                                    <p>{{this.question}}</p>
+                                </div>
+                                <div class="flashcard-back-small">
+                                    <p>{{this.answer}}</p>
                                 </div>
                             </div>
-                        </a>
+                        </div>
+                    </a>
                     {{/each}}
                     {{#unless this.cards.length}}
-                        <a class="carousel-item" href="#!">
-                            <div class="flashcard-small">
-                                <div class="flashcard-inner-small">
-                                    <div class="flashcard-front-small">
-                                        <p>Нет карточек</p>
-                                    </div>
-                                    <div class="flashcard-back-small">
-                                        <p>Добавьте карточки</p>
-                                    </div>
+                    <a class="carousel-item" href="#!">
+                        <div class="flashcard-small">
+                            <div class="flashcard-inner-small">
+                                <div class="flashcard-front-small">
+                                    <p>Нет карточек</p>
+                                </div>
+                                <div class="flashcard-back-small">
+                                    <p>Добавьте карточки</p>
                                 </div>
                             </div>
-                        </a>
+                        </div>
+                    </a>
                     {{/unless}}
                 </div>
                 <form action="/shared-repository/add-to-library/{{this.id}}" method="POST">
                     <button type="submit" class="btn">Добавить в библиотеку</button>
                 </form>
             </div>
-        {{/each}}
+            {{/each}}
+        </div>
     </div>
-</div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const carousels = document.querySelectorAll('.carousel');

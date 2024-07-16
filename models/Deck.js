@@ -175,6 +175,25 @@ class Deck {
             });
         });
     }
+    
+    static async searchShared(query) {
+        return new Promise((resolve, reject) => {
+            db.all('SELECT * FROM shared_decks WHERE name LIKE ?', [`%${query}%`], (err, rows) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    const decks = rows.map(row => ({
+                        id: row.id,
+                        name: row.name,
+                        cards: JSON.parse(row.cards),
+                        theme: row.theme,
+                        direction: row.direction
+                    }));
+                    resolve(decks);
+                }
+            });
+        });
+    }
 }
 
 module.exports = Deck;
