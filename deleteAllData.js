@@ -24,13 +24,13 @@ db.serialize(() => {
     }
   });
 
-  db.run('DELETE FROM shared_decks', (err) => {
-    if (err) {
-      console.error('Error clearing decks table:', err.message);
-    } else {
-      console.log('Decks table cleared.');
-    }
-  });
+  // db.run('DELETE FROM shared_decks', (err) => {
+  //   if (err) {
+  //     console.error('Error clearing decks table:', err.message);
+  //   } else {
+  //     console.log('Decks table cleared.');
+  //   }
+  // });
 });
 
 db.close((err) => {
